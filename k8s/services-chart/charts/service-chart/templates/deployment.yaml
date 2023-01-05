@@ -30,7 +30,7 @@ spec:
           
           env:
             {{ if .Values.service.database.name }}
-            - name: ConnectionStrings__Postgres
+            - name: ConnectionStrings__Local
               value: "Host={{ .Values.service.database.host }};User ID={{ .Values.service.database.username }};Password={{ .Values.service.database.password }};Port={{ .Values.service.database.port }};Database={{ .Values.service.database.name }};"
             {{- end }}
             {{ if .Values.service.rabbitmq }}
