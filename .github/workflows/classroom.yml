@@ -28,6 +28,7 @@ jobs:
       - name: Build and publish images
         timeout-minutes: 15
         run: |
+          sudo chmod +x ./scripts/build-images.sh
           ./scripts/build-images.sh
 
       - name: Deploy
