@@ -3,12 +3,12 @@ WORKDIR /app
 EXPOSE 8050
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
+WORKDIR /CarRentalSystem
 COPY ["Payments/Payments.csproj", "Payments/"]
 COPY ["ModelsDTO/ModelsDTO.csproj", "ModelsDTO/"]
 RUN dotnet restore "Payments/Payments.csproj"
 COPY . .
-WORKDIR "/src/Payments"
+WORKDIR "/CarRentalSystem/Payments"
 
 FROM build AS publish
 RUN dotnet publish "Payments.csproj" -c Release -o /app/publish
