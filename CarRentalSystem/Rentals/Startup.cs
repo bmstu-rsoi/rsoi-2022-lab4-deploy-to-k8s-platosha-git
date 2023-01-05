@@ -54,7 +54,7 @@ namespace Rentals
         private static void AddDbContext(IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<RentalContext>(opt => 
-                opt.UseNpgsql(config.GetConnectionString("Postgres")));
+                opt.UseNpgsql(config.GetConnectionString("Local")));
         }
 
         private static void AddScoped(IServiceCollection services)
