@@ -3,7 +3,7 @@ payment:
     port: 8050
     image:
       name: platoshagit/payment-service
-      version: "1.1"
+      version: "1.0"
     database:
       name: payments
 
@@ -12,7 +12,7 @@ rental:
     port: 8060
     image:
       name: platoshagit/rental-service
-      version: "1.1"
+      version: "1.0"
     database: 
       name: rentals
 
@@ -21,7 +21,7 @@ car:
     port: 8070
     image:
       name: platoshagit/car-service
-      version: "1.1"
+      version: "1.0"
     database: 
       name: cars
 
@@ -30,5 +30,5 @@ gateway:
     port: 8080
     image:
       name: platoshagit/gateway-service
-      version: "1.1"
+      version: "1.0"
     isGateway: true
