@@ -1,8 +1,19 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
-
+﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine as base
 WORKDIR /app
-
-COPY publish/Rentals/ .
-
 EXPOSE 8060
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["Rentals/Rentals.csproj", "Rentals/"]
+COPY ["ModelsDTO/ModelsDTO.csproj", "ModelsDTO/"]
+RUN dotnet restore "Rentals/Rentals.csproj"
+COPY . .
+WORKDIR "/src/Rentals"
+
+FROM build AS publish
+RUN dotnet publish "Rentals.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Rentals.dll"]
