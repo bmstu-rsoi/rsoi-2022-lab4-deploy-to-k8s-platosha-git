@@ -1,5 +1,5 @@
-docker ps -a
+postgresPod=$(kubectl get pods -l app=postgres -o=jsonpath='{.items[].metadata}' | jq -r '.name')
 
-docker exec -i postgres psql -U program cars < test/cars.dump.sql
-docker exec -i postgres psql -U program payments < test/payment.dump.sql
-docker exec -i postgres psql -U program rentals < test/rental.dump.sql
+cat test/cars.dump.sql           | kubectl exec -i $postgresPod -- psql -U program cars
+cat test/payment.dump.sql        | kubectl exec -i $postgresPod -- psql -U program payment
+cat test/rental.dump.sql         | kubectl exec -i $postgresPod -- psql -U program rental
