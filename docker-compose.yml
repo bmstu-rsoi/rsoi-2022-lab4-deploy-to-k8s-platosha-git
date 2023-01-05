@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 services:
   postgres:
     image: library/postgres:13
@@ -32,8 +32,8 @@ services:
 
   api-gateway:
     build:
-      context: .
-      dockerfile: ./CarRentalSystem/APIGateway/Dockerfile
+      context: ./CarRentalSystem
+      dockerfile: ./APIGateway/Dockerfile
     container_name: api-gateway
     restart: on-failure
     ports:
@@ -50,8 +50,8 @@ services:
 
   car-service:
     build:
-      context: .
-      dockerfile: ./CarRentalSystem/Cars/Dockerfile
+      context: ./CarRentalSystem
+      dockerfile: ./Cars/Dockerfile
     container_name: car-service
     restart: on-failure
     ports:
@@ -65,8 +65,8 @@ services:
 
   rental-service:
     build:
-      context: .
-      dockerfile: ./CarRentalSystem/Rentals/Dockerfile
+      context: ./CarRentalSystem
+      dockerfile: ./Rentals/Dockerfile
     container_name: rental-service
     restart: on-failure
     ports:
@@ -80,8 +80,8 @@ services:
 
   payment-service:
     build:
-      context: .
-      dockerfile: ./CarRentalSystem/Payments/Dockerfile
+      context: ./CarRentalSystem
+      dockerfile: ./Payments/Dockerfile
     container_name: payment-service
     restart: on-failure
     ports:

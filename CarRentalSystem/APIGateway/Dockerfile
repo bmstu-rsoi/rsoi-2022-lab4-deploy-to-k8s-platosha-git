@@ -1,14 +1,15 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /CarRentalSystem
+WORKDIR /src
 COPY ["APIGateway/APIGateway.csproj", "APIGateway/"]
 COPY ["ModelsDTO/ModelsDTO.csproj", "ModelsDTO/"]
 RUN dotnet restore "APIGateway/APIGateway.csproj"
 COPY . .
-WORKDIR "/CarRentalSystem/APIGateway"
+WORKDIR "/src/APIGateway"
+RUN dotnet build "APIGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "APIGateway.csproj" -c Release -o /app/publish
