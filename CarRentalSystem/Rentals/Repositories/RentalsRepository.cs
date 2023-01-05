@@ -27,7 +27,8 @@ namespace Rentals.Repositories
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "+RentalsRep : Error while trying to FindAll");
+                _logger.LogError(e, "+ Error while trying to FindAll");
+                Console.WriteLine(e);
                 throw;
             }
         }
@@ -44,7 +45,8 @@ namespace Rentals.Repositories
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "+RentalsRep : Error while trying to FindByName");
+                _logger.LogError(e, "+ Error while trying to FindByName");
+                Console.WriteLine(e);
                 throw;
             }
         }
@@ -60,7 +62,8 @@ namespace Rentals.Repositories
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "+RentalsRep : Error while trying to FindByRentalUid");
+                _logger.LogError(e, "+ Error while trying to FindByName");
+                Console.WriteLine(e);
                 throw;
             }
         }
@@ -84,7 +87,7 @@ namespace Rentals.Repositories
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "+RentalsRep : Error while trying to Add to Rentals");
+                _logger.LogError(e, "+RentalsRep : Error trying to add rental to Rentals");
                 throw;
             }
         }
@@ -100,7 +103,7 @@ namespace Rentals.Repositories
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "+RentalsRep : Error while trying to Patch to Rentals");
+                _logger.LogError(e, "+RentalsRep : Error trying to patch rental to Rentals");
                 throw;
             }
         }

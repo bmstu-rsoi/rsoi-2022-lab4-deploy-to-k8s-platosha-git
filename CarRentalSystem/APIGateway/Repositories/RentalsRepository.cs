@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web;
 using APIGateway.ModelsDTO;
 using Microsoft.Extensions.Options;
@@ -62,19 +61,5 @@ public class RentalsRepository : IRentalsRepository
         
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<RentalsDTO>();
-    }
-
-    public async Task<bool> HealthCheckAsync()
-    {
-        try
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"manage/health");
-            var response = await _httpClient.SendAsync(request);
-            return (response.StatusCode == HttpStatusCode.OK);
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
     }
 }
